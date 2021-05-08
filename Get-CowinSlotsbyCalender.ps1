@@ -54,13 +54,13 @@ function Get-CowinSlotsbyCalender
 
 
            
-            $results 
+            $results =@()
             $url="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=$districtID&date=$Date-05-2021"
             #Write-Host "$url"
        Try
             {
             $invokeresults=Invoke-RestMethod -uri $url -ErrorAction Stop
-            if (($invokeresults.sessions.centers).count -gt 0)
+            if (($invokeresults.centers).count -gt 0)
                 {
 
                     foreach($item in $invokeresults.centers)
@@ -90,7 +90,7 @@ function Get-CowinSlotsbyCalender
      Catch 
 
      {
-      {Write-Warning "Unable to Query Covid Gov API for PS Function Get-CowinSlotsbyCalender. `n $($_.exception.message)"}
+      Write-Warning "Unable to Query Covid Gov API for PS Function Get-CowinSlotsbyCalender. `n $($_.exception.message)"
      }
             
     } #Process Closing

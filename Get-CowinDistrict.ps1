@@ -18,11 +18,11 @@
 
  .Example
     # To find a particular state and it's ID
-      Get-CowinDistrict -DistrictNametoQuery 'Delhi' | ft
+      Get-CowinDistrict -DistrictNametoQuery 'Delhi' -stateid 9 | ft
     
 
  .Example
-    #Get-CowinStateID -DistrictNametoQuery 'Pradesh' | Get-CowinDistrict | ft
+    #Get-CowinStateID -StateNametoQuery 'uttar' | Get-CowinDistrict | ft
 
  .Example
     #To pass multiple district IDs, propertybyvalue
