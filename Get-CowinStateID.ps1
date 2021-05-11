@@ -1,4 +1,7 @@
-﻿<#
+﻿Function Get-CowinStateID
+{
+
+<#
  .Synopsis
   Get the CowinStateID.
 
@@ -12,23 +15,18 @@
   Optional Paramaeter to Query StateID by StateName.
 
  .Example 
-   # To find all the States and their IDs
-     Get-CowinStateID 
-   
+  Get-CowinStateID
+  # To find all the States and their IDs
+      
+ .Example
+ Get-CowinStateID -StateNametoQuery 'Delhi'
+    # To find a particular state and it's ID   
 
  .Example
-    # To find a particular state and it's ID
-      Get-CowinStateID -StateNametoQuery 'Delhi'
-
- .Example
+  'uttar','west' | Get-CowinStateID
     # To find stateid by passing multiple statename, propertybyvalue
-      'uttar','west' | Get-CowinStateID
-
 #>
 
-
-function Get-CowinStateID
-{
 	[CmdletBinding()]
     param
     (

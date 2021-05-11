@@ -1,4 +1,7 @@
-﻿<#
+﻿function Get-CowinDistrict
+{
+
+<#
  .Synopsis
   Get the CowinDistrictID.
 
@@ -12,32 +15,28 @@
   Optional Paramaeter to Query DistrictID by DistrictName.
 
  .Example 
-   # To find all districts in stateid 34
      Get-CowinDistrict -StateID 34
+       # To find all districts in stateid 34
    
 
  .Example
-    # To find a particular state and it's ID
+
       Get-CowinDistrict -DistrictNametoQuery 'Delhi' -stateid 9 | ft
+       # To find a particular state and it's ID
     
 
  .Example
-    #Get-CowinStateID -StateNametoQuery 'uttar' | Get-CowinDistrict | ft
+    Get-CowinStateID -StateNametoQuery 'uttar' | Get-CowinDistrict | ft
 
  .Example
-    #To pass multiple district IDs, propertybyvalue
     10,11,12 | Get-CowinDistrict | ft
+    #To pass multiple district IDs, propertybyvalue
 
  .Example
-    #To pass multiple district IDs, propertybyname
      Get-CowinStateID | Get-CowinDistrict | ft
+     #To pass multiple district IDs, propertybyname
 #>
 
-
-
-
-function Get-CowinDistrict
-{
 	[CmdletBinding()]
     param
     (

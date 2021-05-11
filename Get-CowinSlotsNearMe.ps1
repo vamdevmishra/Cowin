@@ -8,9 +8,6 @@
  .Parameter DistrictsToQuery
   Parameter to provide districtID.
 
- .Parameter Date
-  Optional Paramaeter to Input date.
-
   .Parameter AgeLimitQuery
    Paramaeter to Perform query on AgeLimit.
 
@@ -24,8 +21,12 @@
   Optional Paramaeter to Input SMTPServer Address.
 
 .Example
+ Get-CowinSlotsNearMe -DistrictsToQuery 652 -AgeLimitQuery 18 -EmailIDFrom xyz@fiction.com -EmailIDTo xyz@fiction.com
  #To find the slots near me
-  Get-CowinSlotsNearMe -DistrictsToQuery 652 -Date 10 -AgeLimitQuery 18 -EmailIDFrom xyz@fiction.com -EmailIDTo xyz@fiction.com
+
+ .Example
+ Get-CowinSlotsNearMe -DistrictsToQuery 651 -AgeLimitQuery 45 -EmailIDFrom "david@domain.com" -EmailIDTo "david@domain.com" -SMTPServer "smtphost.subdomain.forestname.domain.com"  | ft
+  #To find the slots near me for agelimit45 and sendemail
 
 #>
 
@@ -39,22 +40,22 @@ function Get-CowinSlotsNearMe
         [Parameter(Mandatory=$true,ValueFromPipeline=$true)]
         [String]
         $DistrictsToQuery,
+
+        [parameter(Mandatory=$false)]
+        $AgeLimitQuery="18",
+
         [parameter(Mandatory=$false)]
         [String]
-        $Date=(Get-Date -Format "dd"),
-        [parameter(Mandatory=$true)]
-        [String]
-        $AgeLimitQuery="18",
-        [parameter(Mandatory=$true)]
-        [int32]
         $EmailIDFrom,
+
         [parameter(Mandatory=$false)]
         [String]
         $EmailIDTo,
+
         [parameter(Mandatory=$false)]
         [String]
         $SMTPServer
-
+        
     )
 
 	
@@ -73,7 +74,8 @@ function Get-CowinSlotsNearMe
 
         Try
             {
-             Send-MailMessage -From '$EmailIDFrom' -To $EmailIDTo -Subject 'Available Cowin Slots' -Body $($results| select SlotsVacant,District,Date,Name,Address |ft | Out-String) -SmtpServer $SMTPServer -Port 25 -ErrorAction Stop
+             #Write-Host "sending mail" -ForegroundColor Green
+             Send-MailMessage -From $EmailIDFrom -To $EmailIDTo -Subject 'Available Cowin Slots' -Body $($results| select SlotsVacant,District,Date,Name,Address,ageLimit |ft | Out-String) -SmtpServer $SMTPServer -Port 25 -ErrorAction Stop -Verbose
             }
 
         Catch
