@@ -12,8 +12,10 @@ Steps to download and install the module
 
 1. Download the module files Cowin.psd1 and Cowin.psm1
 2. Run below command on Powershell Window to import the module
-
-   Import-Module .\Cowin.psd1
+   Import-Module <module file location>
+   
+   For example
+   Import-Module C:\Temp\Cowin.psd1
 
 3. Below are the functions to consume from this module, here Show-Notification is a helper function to send toast and email notifications. Please use the examples listed in the individual cmdlets to fetch the vaccination slots.
 
