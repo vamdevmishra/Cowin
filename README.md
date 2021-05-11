@@ -21,7 +21,7 @@ Note:
 Order to run the cmdlets
 Get-CowinStateID -> Get-CowinDistrict -> Get-CowinSlotsByDate -> Get-CowinSlotsbyCalender -> Get-CowinSlotsbyCalender (optional)
 
-CommandType     Name                                               Version    Source                                                                                              -----------     ----                                              -------    ------                                                                                                                                           
+CommandType     Name                                               Version    Source                                                                                                                                                                                                                                
 Function        Get-CowinDistrict                                  1.0.0      Cowin                                                                                                                                            
 Function        Get-CowinSlotsbyCalender                           1.0.0      Cowin                                                                                                                                            
 Function        Get-CowinSlotsByDate                               1.0.0      Cowin                                                                                                                                            
